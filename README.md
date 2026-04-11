@@ -22,7 +22,7 @@ Course Seat Alert System
   - Yes
 
 - What is the link to your GitHub repository?
-  - 
+  - https://github.com/kennerfitt/course-seat-alert-system
 
 - If you are in a group, does everyone have access to the github repo?
   - N/A
