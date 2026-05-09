@@ -1,25 +1,49 @@
 public class Main {
+
     public static void main(String[] args) {
-        Student student = new Student("student@depaul.edu");
 
-        Course course = new Course("SE 350", 3);
+        // create notification strategy
+        NotificationStrategy emailStrategy =
+                new EmailNotification();
 
-        System.out.println(course.getCourseCode() + " seats: "
-                + course.getAvailableSeats() + " (" + course.getStatus() + ")");
+        // create students
+        Student student1 =
+                new Student(
+                        "student1@depaul.edu",
+                        emailStrategy
+                );
 
+        Student student2 =
+                new Student(
+                        "student2@depaul.edu",
+                        emailStrategy
+                );
+
+        // create course
+        Course se350 =
+                new Course("SE 350", 3);
+
+        // students subscribe to course
+        se350.addStudent(student1);
+
+        se350.addStudent(student2);
+
+        System.out.println(
+                "Initial seats: "
+                        + se350.getAvailableSeats()
+                        + " ("
+                        + se350.getStatus()
+                        + ")"
+        );
+
+        // simulate enrollment
         System.out.println("\nSomeone enrolled...");
-        course.setAvailableSeats(2);
 
-        student.sendEmail(
-                course.getCourseCode() + " now has "
-                        + course.getAvailableSeats() + " available seats."
-        );
+        se350.setAvailableSeats(2);
 
+        // simulate more enrollment
         System.out.println("\nMore students enrolled...");
-        course.setAvailableSeats(0);
 
-        student.sendEmail(
-                course.getCourseCode() + " is now " + course.getStatus() + "."
-        );
+        se350.setAvailableSeats(0);
     }
 }

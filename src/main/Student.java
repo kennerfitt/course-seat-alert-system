@@ -1,12 +1,19 @@
 public class Student {
+
     private String email;
 
-    public Student(String email) {
+    private NotificationStrategy notificationStrategy;
+
+    public Student(String email,
+                   NotificationStrategy notificationStrategy) {
+
         this.email = email;
+
+        this.notificationStrategy = notificationStrategy;
     }
 
-    public void sendEmail(String message) {
-        System.out.println("\nEmail sent to: " + email);
-        System.out.println(message);
+    public void update(String message) {
+
+        notificationStrategy.sendNotification(email, message);
     }
 }
