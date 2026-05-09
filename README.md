@@ -57,3 +57,29 @@ The current version is a simulation of a university course monitoring system. In
 - The system sends a notification that the course is FULL
 
 This version focuses on demonstrating object-oriented structure and behavior using simulated data. Future versions may include more advanced notification settings and design patterns.
+
+## Sprint 3 -- Design Patterns Used
+
+### Observer Pattern
+The Course class notifies all students whenever the number of available seats changes.
+
+### Strategy Pattern
+The NotificationStrategy interface allows different notification methods to be used. Currently, EmailNotification is implemented.
+
+## UML Diagram
+
+The UML diagram for the design patterns used in this project is included in the root folder of the repository as uml-diagram.drawio.
+
+## Final Project Goals
+
+For the final project, I want the system to simulate course tracking and send notifications to students when course seat availability changes.
+
+Possible future improvements:
+- Multiple notification methods
+- Tracking multiple courses
+- Custom notification preferences
+- Real email support
+
+## Problems Encountered
+
+One challenge was understanding how to connect the Observer and Strategy design patterns together while keeping the project simple.
