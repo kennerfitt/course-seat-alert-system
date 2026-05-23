@@ -83,3 +83,20 @@ Possible future improvements:
 ## Problems Encountered
 
 One challenge was understanding how to connect the Observer and Strategy design patterns together while keeping the project simple.
+
+
+## Sprint 4 -- Design Patterns Added
+
+### Factory Method
+NotificationFactory creates the correct NotificationStrategy (email or text)
+based on a string preference, removing direct instantiation from Main.
+
+### Singleton
+CourseRegistry is a Singleton that acts as a central registry for all courses
+in the system. Only one instance can exist, accessed via getInstance().
+
+## UML Diagram
+See uml-diagram.png in the root folder of this repository.
+
+## Problems Encountered
+No major problems encountered in Sprint 4.
