@@ -2,18 +2,31 @@ public class Main {
 
     public static void main(String[] args) {
 
-        // Factory Method creates the right strategy by name
+        // Factory Method creates the strategies
+        NotificationCreator emailCreator =
+                new EmailNotificationCreator();
+
+        NotificationCreator textCreator =
+                new TextNotificationCreator();
+
         NotificationStrategy emailStrategy =
-                NotificationFactory.create("email");
+                emailCreator.createNotification();
 
         NotificationStrategy textStrategy =
-                NotificationFactory.create("text");
+                textCreator.createNotification();
+
+        // Decorator wraps strategies with logging
+        NotificationStrategy loggedEmail =
+                new LoggingNotification(emailStrategy);
+
+        NotificationStrategy loggedText =
+                new LoggingNotification(textStrategy);
 
         Student student1 =
-                new Student("student1@depaul.edu", emailStrategy);
+                new Student("student1@depaul.edu", loggedEmail);
 
         Student student2 =
-                new Student("student2@depaul.edu", textStrategy);
+                new Student("student2@depaul.edu", loggedText);
 
         Course course = new Course("SE 350", 3);
         course.addStudent(student1);
@@ -25,11 +38,18 @@ public class Main {
 
         registry.printAllCourses();
 
+        // Command pattern executes seat changes
+        SeatChangeCommand command1 =
+                new SeatChangeCommand(course, 2);
+
+        SeatChangeCommand command2 =
+                new SeatChangeCommand(course, 0);
+
         System.out.println("\nSomeone enrolled...");
-        course.setAvailableSeats(2);
+        command1.execute();
 
         System.out.println("\nMore students enrolled...");
-        course.setAvailableSeats(0);
+        command2.execute();
 
         registry.printAllCourses();
     }
