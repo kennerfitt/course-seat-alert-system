@@ -100,3 +100,14 @@ See uml-diagram.png in the root folder of this repository.
 
 ## Problems Encountered
 No major problems encountered in Sprint 4.
+
+## Sprint 5 -- Design Patterns Added
+
+### Decorator
+LoggingNotification wraps any NotificationStrategy and adds
+logging before and after the notification is sent.
+
+### Command
+SeatChangeCommand wraps a seat change action into an object.
+Instead of calling setAvailableSeats() directly, a command
+object is created and executed.
